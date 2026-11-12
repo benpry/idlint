@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "idlint"
+dynamic = ["version"]
+description = "Pre-commit scanner that blocks commits containing participant PII"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+
+[project.scripts]
+idlint = "idlint.cli:main"
+
+[dependency-groups]
+dev = ["pytest"]
+
+[tool.setuptools]
+packages = ["idlint"]
+
+[tool.setuptools.dynamic]
+version = { attr = "idlint.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: performance tests, run with `pytest -m slow`"]
+addopts = "-m 'not slow'"

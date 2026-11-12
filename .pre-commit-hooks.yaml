@@ -1,0 +1,7 @@
+- id: idlint
+  name: idlint
+  description: Block commits whose staged files contain participant PII.
+  entry: idlint scan --staged
+  language: python
+  pass_filenames: false
+  always_run: true
